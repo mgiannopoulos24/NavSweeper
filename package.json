@@ -1,0 +1,29 @@
+{
+  "name": "navsweeper",
+  "version": "1.0.0",
+  "description": "Expand your menu capabilities. Bulk select and delete navigation menu items easily.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgiannopoulos24/navsweeper"
+  },
+  "author": "Marios Giannopoulos",
+  "license": "GPL-3",
+  "scripts": {
+    "start": "wp-env start",
+    "setup": "wp-env run cli wp eval-file scripts/setup-menus.php",
+    "start:setup": "wp-env start && bun run setup",
+    "stop": "wp-env stop",
+    "destroy": "wp-env destroy",
+    "shell": "wp-env run cli /bin/bash",
+    "bundle": "bunx bestzip navsweeper.zip navsweeper.php includes/ views/ assets/",
+    "lint": "phplint '*.php' 'includes/**/*.php' 'views/**/*.php'"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0",
+    "bestzip": "^2.2.1"
+  },
+  "dependencies": {
+    "install": "^0.13.0",
+    "phplint": "^2.0.5"
+  }
+}

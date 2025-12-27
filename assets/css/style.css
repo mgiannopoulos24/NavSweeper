@@ -1,0 +1,302 @@
+/* NavSweeper Bulk Edit Modal Styles */
+
+.navsweeper-modal {
+    display: none;
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: navsweeper-fadeIn 0.2s;
+}
+
+@keyframes navsweeper-fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navsweeper-modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 0;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 4px;
+    animation: navsweeper-slideDown 0.3s;
+}
+
+@keyframes navsweeper-slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navsweeper-modal-header {
+    padding: 15px 20px;
+    background-color: #f6f7f7;
+    border-bottom: 1px solid #ccd0d4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px 4px 0 0;
+}
+
+.navsweeper-modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.navsweeper-modal-close {
+    color: #787c82;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.navsweeper-modal-close:hover,
+.navsweeper-modal-close:focus {
+    color: #1d2327;
+}
+
+.navsweeper-modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.navsweeper-edit-field {
+    padding: 10px 0;
+}
+
+.navsweeper-edit-field label {
+    cursor: pointer;
+}
+
+.navsweeper-edit-field .description {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-style: italic;
+    color: #646970;
+    font-size: 13px;
+}
+
+.navsweeper-edit-field input[type="text"],
+.navsweeper-edit-field input[type="url"],
+.navsweeper-edit-field textarea,
+.navsweeper-edit-field select {
+    margin-top: 5px;
+}
+
+.navsweeper-modal-footer {
+    padding: 15px 20px;
+    background-color: #f6f7f7;
+    border-top: 1px solid #ccd0d4;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-radius: 0 0 4px 4px;
+}
+
+.navsweeper-modal-footer .button {
+    margin: 0;
+}
+
+/* Table row height and vertical centering */
+.navsweeper-menu-item-row {
+    position: relative;
+    height: 40px;
+}
+
+.navsweeper-menu-item-row td,
+.navsweeper-menu-item-row th {
+    vertical-align: middle;
+    height: 40px;
+}
+
+/* Add Menu Item Button Styles */
+.navsweeper-add-item-btn {
+    display: flex;
+    background: #2271b1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.navsweeper-add-icon {
+    display: inline-block;
+    color: #fff;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.column-add {
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+}
+
+/* Dropdown menu for add button */
+.navsweeper-add-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 4px;
+    display: none;
+}
+
+.navsweeper-add-dropdown.show {
+    display: block;
+}
+
+.navsweeper-add-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    color: #1d2327;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f1;
+    transition: background-color 0.2s;
+}
+
+.navsweeper-add-dropdown-item i {
+    font-size: 12px;
+    width: 14px;
+    text-align: center;
+}
+
+.navsweeper-add-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.navsweeper-add-dropdown-item:hover {
+    background-color: #f6f7f7;
+}
+
+.navsweeper-add-dropdown-item:focus {
+    outline: 2px solid #2271b1;
+    outline-offset: -2px;
+}
+
+/* Table cell padding and vertical centering */
+.widefat td, .widefat th {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+/* Ensure checkboxes are centered */
+.widefat .check-column {
+    vertical-align: middle;
+    text-align: center;
+    width: 2.2em;
+}
+
+.widefat .check-column input[type="checkbox"] {
+    margin: 0 auto;
+    display: block;
+}
+
+.widefat thead .check-column input[type="checkbox"] {
+    margin: 0 auto;
+}
+
+.widefat thead td.check-column {
+    padding-top: 0;
+}
+
+.widefat tbody th.check-column {
+    padding: 0;
+}
+
+.navsweeper-menu-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+.navsweeper-menu-selector select {
+    min-width: 200px;
+}
+
+.navsweeper-menu-selector .button {
+    margin: 0;
+}
+
+.navsweeper-delete-section {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 782px) {
+    .navsweeper-modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    .navsweeper-modal-body {
+        padding: 15px;
+    }
+
+    .navsweeper-modal-header,
+    .navsweeper-modal-footer {
+        padding: 12px 15px;
+    }
+
+    .navsweeper-add-item-btn {
+        display: inline-block;
+    }
+
+    .navsweeper-menu-selector {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navsweeper-menu-selector select {
+        width: 100%;
+    }
+
+    .navsweeper-menu-selector .button {
+        width: 100%;
+    }
+}
