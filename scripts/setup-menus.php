@@ -180,5 +180,5 @@ foreach ( $footer_items as $item_data ) {
 }
 
 echo "\nSetup complete! You now have menus with items to test NavSweeper.\n";
-echo "Go to: Appearance > NavSweeper to test your plugin.\n";
+echo "Go to: Appearance > NavSweeper to test the plugin.\n";
 

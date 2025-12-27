@@ -1,4 +1,162 @@
-/* NavSweeper Bulk Edit Modal Styles */
+/* ============================================
+   NavSweeper Stylesheet
+   ============================================ */
+
+/* ============================================
+   General Layout & Utilities
+   ============================================ */
+
+/* Empty menu card */
+.card.navsweeper-empty-menu {
+    margin-top: 20px;
+}
+
+/* ============================================
+   Table Styles
+   ============================================ */
+
+/* Table row height and vertical centering */
+.navsweeper-menu-item-row {
+    position: relative;
+    height: 40px;
+}
+
+.navsweeper-menu-item-row td,
+.navsweeper-menu-item-row th {
+    vertical-align: middle;
+    height: 40px;
+}
+
+/* Table cell padding and vertical centering */
+.widefat td, .widefat th {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+/* Ensure checkboxes are centered */
+.widefat .check-column {
+    vertical-align: middle;
+    text-align: center;
+    width: 2.2em;
+}
+
+.widefat .check-column input[type="checkbox"] {
+    margin: 0 auto;
+    display: block;
+}
+
+.widefat thead .check-column input[type="checkbox"] {
+    margin: 0 auto;
+}
+
+.widefat thead td.check-column {
+    padding-top: 0;
+}
+
+.widefat tbody th.check-column {
+    padding: 0;
+}
+
+/* Column add width */
+.column-add {
+    text-align: center;
+    vertical-align: middle;
+    height: 40px;
+    width: 50px;
+}
+
+/* ============================================
+   Menu Selector
+   ============================================ */
+
+.navsweeper-menu-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+.navsweeper-menu-selector select {
+    min-width: 200px;
+}
+
+.navsweeper-menu-selector .button {
+    margin: 0;
+}
+
+/* ============================================
+   Action Bar Styles
+   ============================================ */
+
+.navsweeper-action-bar {
+    margin-top: 20px;
+}
+
+/* Delete Section */
+.navsweeper-delete-section {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.navsweeper-delete-section .button-link-delete {
+    text-decoration: none;
+    border: 1px solid #d63638;
+    padding: 0 10px;
+    line-height: 2;
+}
+
+/* Move Section */
+.navsweeper-move-section {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.navsweeper-move-section strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.navsweeper-move-section-inner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.navsweeper-move-section label {
+    font-weight: 600;
+    margin: 0;
+}
+
+.navsweeper-move-section select {
+    min-width: 200px;
+    padding: 5px;
+    height: 30px;
+    line-height: 1;
+}
+
+/* Bulk Edit Section */
+.navsweeper-bulk-edit-section {
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.navsweeper-bulk-edit-section strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* ============================================
+   Modal Styles
+   ============================================ */
 
 .navsweeper-modal {
     display: none;
@@ -82,27 +240,8 @@
     overflow-y: auto;
 }
 
-.navsweeper-edit-field {
-    padding: 10px 0;
-}
-
-.navsweeper-edit-field label {
-    cursor: pointer;
-}
-
-.navsweeper-edit-field .description {
-    margin-top: 5px;
-    margin-bottom: 0;
-    font-style: italic;
-    color: #646970;
-    font-size: 13px;
-}
-
-.navsweeper-edit-field input[type="text"],
-.navsweeper-edit-field input[type="url"],
-.navsweeper-edit-field textarea,
-.navsweeper-edit-field select {
-    margin-top: 5px;
+.navsweeper-modal-body .description {
+    margin-bottom: 15px;
 }
 
 .navsweeper-modal-footer {
@@ -119,19 +258,58 @@
     margin: 0;
 }
 
-/* Table row height and vertical centering */
-.navsweeper-menu-item-row {
-    position: relative;
-    height: 40px;
+/* ============================================
+   Form Field Styles
+   ============================================ */
+
+.navsweeper-edit-field {
+    padding: 10px 0;
+    margin-bottom: 15px;
 }
 
-.navsweeper-menu-item-row td,
-.navsweeper-menu-item-row th {
-    vertical-align: middle;
-    height: 40px;
+.navsweeper-edit-field label {
+    cursor: pointer;
 }
 
-/* Add Menu Item Button Styles */
+/* Flex label for checkbox fields */
+.navsweeper-edit-field label.navsweeper-label-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* Block label for regular fields */
+.navsweeper-edit-field label.navsweeper-label-block {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.navsweeper-edit-field .description {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-style: italic;
+    color: #646970;
+    font-size: 13px;
+}
+
+.navsweeper-edit-field input[type="text"],
+.navsweeper-edit-field input[type="url"],
+.navsweeper-edit-field textarea,
+.navsweeper-edit-field select {
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* Required field indicator */
+.navsweeper-required-asterisk {
+    color: #d63638;
+}
+
+/* ============================================
+   Add Menu Item Button Styles
+   ============================================ */
+
 .navsweeper-add-item-btn {
     display: flex;
     background: #2271b1;
@@ -160,13 +338,10 @@
     font-size: 16px;
 }
 
-.column-add {
-    text-align: center;
-    vertical-align: middle;
-    height: 40px;
-}
+/* ============================================
+   Dropdown Menu for Add Button
+   ============================================ */
 
-/* Dropdown menu for add button */
 .navsweeper-add-dropdown {
     position: absolute;
     top: 100%;
@@ -216,58 +391,10 @@
     outline-offset: -2px;
 }
 
-/* Table cell padding and vertical centering */
-.widefat td, .widefat th {
-    padding: 6px 10px;
-    vertical-align: middle;
-}
+/* ============================================
+   Responsive Styles
+   ============================================ */
 
-/* Ensure checkboxes are centered */
-.widefat .check-column {
-    vertical-align: middle;
-    text-align: center;
-    width: 2.2em;
-}
-
-.widefat .check-column input[type="checkbox"] {
-    margin: 0 auto;
-    display: block;
-}
-
-.widefat thead .check-column input[type="checkbox"] {
-    margin: 0 auto;
-}
-
-.widefat thead td.check-column {
-    padding-top: 0;
-}
-
-.widefat tbody th.check-column {
-    padding: 0;
-}
-
-.navsweeper-menu-selector {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
-    flex-wrap: wrap;
-}
-
-.navsweeper-menu-selector select {
-    min-width: 200px;
-}
-
-.navsweeper-menu-selector .button {
-    margin: 0;
-}
-
-.navsweeper-delete-section {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-/* Responsive adjustments */
 @media screen and (max-width: 782px) {
     .navsweeper-modal-content {
         width: 95%;
