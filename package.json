@@ -19,7 +19,7 @@
     "lint": "phplint '*.php' 'includes/**/*.php' 'views/**/*.php'"
   },
   "devDependencies": {
-    "@wordpress/env": "^10.0.0",
+    "@wordpress/env": "^10.37.0",
     "bestzip": "^2.2.1"
   },
   "dependencies": {

@@ -69,7 +69,7 @@
 
     "@types/responselike": ["@types/responselike@1.0.3", "", { "dependencies": { "@types/node": "*" } }, "sha512-H/+L+UkTV33uf49PH5pCAUBVPNj2nDBXTN+qS1dOwyyg24l3CcicicCA7ca+HMvJBZcFgl5r8e+RR6elsb4Lyw=="],
 
-    "@wordpress/env": ["@wordpress/env@10.36.0", "", { "dependencies": { "@inquirer/prompts": "^7.2.0", "chalk": "^4.0.0", "copy-dir": "^1.3.0", "docker-compose": "^0.24.3", "extract-zip": "^1.6.7", "got": "^11.8.5", "js-yaml": "^3.13.1", "ora": "^4.0.2", "rimraf": "^5.0.10", "simple-git": "^3.5.0", "terminal-link": "^2.0.0", "yargs": "^17.3.0" }, "bin": { "wp-env": "bin/wp-env" } }, "sha512-qZ3RNA6HC+PI7qVip96cQuv2gjpGZXKT1do9NZlLArgEoxQxep8zFMs3MdaE1+PK7y6He2KoiUWzN4cSXY9QMg=="],
+    "@wordpress/env": ["@wordpress/env@10.37.0", "", { "dependencies": { "@inquirer/prompts": "^7.2.0", "chalk": "^4.0.0", "copy-dir": "^1.3.0", "docker-compose": "^0.24.3", "extract-zip": "^1.6.7", "got": "^11.8.5", "js-yaml": "^3.13.1", "ora": "^4.0.2", "rimraf": "^5.0.10", "simple-git": "^3.5.0", "terminal-link": "^2.0.0", "yargs": "^17.3.0" }, "bin": { "wp-env": "bin/wp-env" } }, "sha512-yc7jtneBI2JD+tOtLiSQRsh4AcUVjEf2epOZSWQl8FoO6XWsEYtCzshpPXR8GHnq0uWBsjZ7LLdhk2WzE83UVw=="],
 
     "ansi-escapes": ["ansi-escapes@4.3.2", "", { "dependencies": { "type-fest": "^0.21.3" } }, "sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ=="],
 
