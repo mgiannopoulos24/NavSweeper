@@ -1,0 +1,317 @@
+# Copyright (C) 2026 Marios Giannopoulos
+# This file is distributed under the GPL v3.
+msgid ""
+msgstr ""
+"Project-Id-Version: NavSweeper 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/navsweeper\n"
+"POT-Creation-Date: 2026-06-28 15:38+0300\n"
+"PO-Revision-Date: 2026-06-28T15:00:00+02:00\n"
+"Last-Translator: Marios Giannopoulos <mgiannopoulos24@example.com>\n"
+"Language-Team: Greek <team@el.gr>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: WP-CLI 2.12.0\n"
+
+#: includes/class-navsweeper-plugin.php:57
+msgid "Please select at least one menu item to edit."
+msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα στοιχείο μενού για επεξεργασία."
+
+#: includes/class-navsweeper-plugin.php:58 views/admin-view.php:57
+msgid "Please select at least one field to update."
+msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα πεδίο για ενημέρωση."
+
+#: includes/class-navsweeper-plugin.php:59
+msgid "Please provide values for all selected fields."
+msgstr "Παρακαλώ συμπληρώστε τιμές για όλα τα επιλεγμένα πεδία."
+
+#. translators: %d: number of items
+#: includes/class-navsweeper-plugin.php:61
+#, php-format
+msgid "Are you sure you want to update %d item(s)?"
+msgstr "Είστε σίγουροι ότι θέλετε να ενημερώσετε %d στοιχεία;"
+
+#: includes/class-navsweeper-plugin.php:62
+msgid "Please select at least one menu item to move."
+msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα στοιχείο μενού για μετακίνηση."
+
+#: includes/class-navsweeper-plugin.php:63 views/admin-view.php:55
+msgid "Please select a destination menu."
+msgstr "Παρακαλώ επιλέξτε ένα μενού προορισμού."
+
+#. translators: %d: number of items
+#: includes/class-navsweeper-plugin.php:65
+#, php-format
+msgid "Are you sure you want to move %d item(s) within the current menu?"
+msgstr "Είστε σίγουροι ότι θέλετε να μετακινήσετε %d στοιχεία εντός του τρέχοντος μενού;"
+
+#. translators: %1$d: number of items, %2$s: destination menu name
+#: includes/class-navsweeper-plugin.php:67
+#, php-format
+msgid "Are you sure you want to move %1$d item(s) to \"%2$s\"?"
+msgstr "Είστε σίγουροι ότι θέλετε να μετακινήσετε %1$d στοιχεία στο \"%2$s\";"
+
+#: includes/class-navsweeper-plugin.php:68
+msgid "Items will be reorganized as top-level items."
+msgstr "Τα στοιχεία θα αναδιοργανωθούν ως στοιχεία ανώτατου επιπέδου."
+
+#: includes/class-navsweeper-plugin.php:69 views/admin-view.php:168
+msgid "(current)"
+msgstr "(τρέχον)"
+
+#: includes/class-navsweeper-plugin.php:85
+msgid "Add Above"
+msgstr "Προσθήκη Από Πάνω"
+
+#: includes/class-navsweeper-plugin.php:86
+msgid "Add Below"
+msgstr "Προσθήκη Από Κάτω"
+
+#. translators: %s: menu item title
+#: includes/class-navsweeper-plugin.php:88
+#, php-format
+msgid "above \"%s\""
+msgstr "πάνω από \"%s\""
+
+#. translators: %s: menu item title
+#: includes/class-navsweeper-plugin.php:90
+#, php-format
+msgid "below \"%s\""
+msgstr "κάτω από \"%s\""
+
+#: includes/class-navsweeper-plugin.php:91
+msgid "Please enter a label for the menu item."
+msgstr "Παρακαλώ εισάγετε μια ετικέτα για το στοιχείο μενού."
+
+#: includes/class-navsweeper-plugin.php:92
+msgid "Please enter a URL for the menu item."
+msgstr "Παρακαλώ εισάγετε ένα URL για το στοιχείο μενού."
+
+#: includes/class-navsweeper-plugin.php:116
+msgid "Primary Menu"
+msgstr "Κύριο Μενού"
+
+#: includes/class-navsweeper-plugin.php:128
+#: includes/class-navsweeper-plugin.php:129 views/admin-view.php:17
+msgid "NavSweeper"
+msgstr "NavSweeper"
+
+#: includes/class-navsweeper-plugin.php:146
+msgid "Security check failed. Please try again."
+msgstr "Ο έλεγχος ασφαλείας απέτυχε. Παρακαλώ δοκιμάστε ξανά."
+
+#: includes/class-navsweeper-plugin.php:150
+msgid "You do not have permission to edit menus."
+msgstr "Δεν έχετε δικαιώματα να επεξεργαστείτε μενού."
+
+#. translators: %s: file path
+#: includes/class-navsweeper-plugin.php:497
+#, php-format
+msgid "Error: View file not found at %s"
+msgstr "Σφάλμα: Το αρχείο προβολής δεν βρέθηκε στο %s"
+
+#: views/admin-view.php:27
+msgid "deleted"
+msgstr "διαγράφηκαν"
+
+#: views/admin-view.php:28
+msgid "moved"
+msgstr "μετακινήθηκαν"
+
+#: views/admin-view.php:29
+msgid "added"
+msgstr "προστέθηκαν"
+
+#: views/admin-view.php:30
+msgid "edited"
+msgstr "επεξεργάστηκαν"
+
+#. translators: %1$s is the action type, %2$d is the number of items.
+#: views/admin-view.php:39
+#, php-format
+msgid "Successfully %1$s %2$d menu item."
+msgid_plural "Successfully %1$s %2$d menu items."
+msgstr[0] "Επιτυχής %1$s %2$d στοιχείο μενού."
+msgstr[1] "Επιτυχής %1$s %2$d στοιχεία μενού."
+
+#: views/admin-view.php:54
+msgid "Invalid destination menu."
+msgstr "Μη έγκυρο μενού προορισμού."
+
+#: views/admin-view.php:56
+msgid "No items selected."
+msgstr "Δεν επιλέχθηκαν στοιχεία."
+
+#: views/admin-view.php:58
+msgid "Please fill in all required fields (Label and URL)."
+msgstr "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία (Ετικέτα και URL)."
+
+#: views/admin-view.php:59
+msgid "Failed to add menu item. Please try again."
+msgstr "Αποτυχία προσθήκης στοιχείου μενού. Παρακαλώ δοκιμάστε ξανά."
+
+#: views/admin-view.php:61
+msgid "An error occurred."
+msgstr "Παρουσιάστηκε σφάλμα."
+
+#: views/admin-view.php:69
+msgid "No menus found. Create a menu in Appearance > Menus first."
+msgstr "Δεν βρέθηκαν μενού. Δημιουργήστε ένα μενού από Εμφάνιση > Μενού πρώτα."
+
+#: views/admin-view.php:77
+msgid "Select Menu"
+msgstr "Επιλέξτε Μενού"
+
+#: views/admin-view.php:85
+msgid "Load Menu Items"
+msgstr "Φόρτωση Στοιχείων Μενού"
+
+#: views/admin-view.php:96
+msgid "This menu is empty."
+msgstr "Αυτό το μενού είναι άδειο."
+
+#: views/admin-view.php:109
+msgid "Link Text (Label)"
+msgstr "Κείμενο Συνδέσμου (Ετικέτα)"
+
+#: views/admin-view.php:110 views/admin-view.php:223 views/admin-view.php:300
+msgid "URL"
+msgstr "URL"
+
+#: views/admin-view.php:111
+msgid "Type"
+msgstr "Τύπος"
+
+#: views/admin-view.php:135
+msgid "Add menu item"
+msgstr "Προσθήκη στοιχείου μενού"
+
+#: views/admin-view.php:152
+msgid "Delete Selected"
+msgstr "Διαγραφή Επιλεγμένων"
+
+#: views/admin-view.php:153
+msgid "Are you sure you want to delete these items?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτά τα στοιχεία;"
+
+#: views/admin-view.php:158
+msgid "Bulk Move Menu Items"
+msgstr "Μαζική Μετακίνηση Στοιχείων Μενού"
+
+#: views/admin-view.php:160
+msgid "Move selected to:"
+msgstr "Μετακίνηση επιλεγμένων σε:"
+
+#: views/admin-view.php:162
+msgid "Select Destination Menu"
+msgstr "Επιλέξτε Μενού Προορισμού"
+
+#: views/admin-view.php:179
+msgid "Move Items"
+msgstr "Μετακίνηση Στοιχείων"
+
+#: views/admin-view.php:185 views/admin-view.php:197
+msgid "Bulk Edit Menu Items"
+msgstr "Μαζική Επεξεργασία Στοιχείων Μενού"
+
+#: views/admin-view.php:187
+msgid "Edit Selected Items"
+msgstr "Επεξεργασία Επιλεγμένων Στοιχείων"
+
+#: views/admin-view.php:207
+msgid ""
+"Only check the fields you want to update. Leave fields unchecked to keep "
+"their current values."
+msgstr ""
+"Τσεκάρετε μόνο τα πεδία που θέλετε να ενημερώσετε. Αφήστε τα πεδία χωρίς "
+"τσεκάρισμα για να διατηρήσουν τις τρέχουσες τιμές τους."
+
+#: views/admin-view.php:214 views/admin-view.php:292
+msgid "Label (Link Text)"
+msgstr "Ετικέτα (Κείμενο Συνδέσμου)"
+
+#: views/admin-view.php:216
+msgid "New label for all selected items"
+msgstr "Νέα ετικέτα για όλα τα επιλεγμένα στοιχεία"
+
+#: views/admin-view.php:232 views/admin-view.php:308
+msgid "CSS Classes"
+msgstr "CSS Classes"
+
+#: views/admin-view.php:234 views/admin-view.php:310
+msgid "class1 class2 class3"
+msgstr "class1 class2 class3"
+
+#: views/admin-view.php:235 views/admin-view.php:311
+msgid "Separate multiple classes with spaces."
+msgstr "Διαχωρίστε πολλαπλές κλάσεις με κενά."
+
+#: views/admin-view.php:242 views/admin-view.php:317
+msgid "Link Target"
+msgstr "Στόχος Συνδέσμου"
+
+#: views/admin-view.php:245 views/admin-view.php:320
+msgid "Same window/tab"
+msgstr "Ίδιο παράθυρο/καρτέλα"
+
+#: views/admin-view.php:246 views/admin-view.php:321
+msgid "New window/tab"
+msgstr "Νέο παράθυρο/καρτέλα"
+
+#: views/admin-view.php:247 views/admin-view.php:322
+msgid "Same window/tab (explicit)"
+msgstr "Ίδιο παράθυρο/καρτέλα (ρητό)"
+
+#: views/admin-view.php:248 views/admin-view.php:323
+msgid "Parent frame"
+msgstr "Γονικό πλαίσιο"
+
+#: views/admin-view.php:249 views/admin-view.php:324
+msgid "Top frame"
+msgstr "Ανώτατο πλαίσιο"
+
+#: views/admin-view.php:257 views/admin-view.php:331
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: views/admin-view.php:259
+msgid "Description for menu items"
+msgstr "Περιγραφή για στοιχεία μενού"
+
+#: views/admin-view.php:264 views/admin-view.php:338
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: views/admin-view.php:265
+msgid "Update Items"
+msgstr "Ενημέρωση Στοιχείων"
+
+#: views/admin-view.php:275
+msgid "Add New Menu Item"
+msgstr "Προσθήκη Νέου Στοιχείου Μενού"
+
+#: views/admin-view.php:286
+msgid "Add new menu item:"
+msgstr "Προσθήκη νέου στοιχείου μενού:"
+
+#: views/admin-view.php:294
+msgid "Menu item label"
+msgstr "Ετικέτα στοιχείου μενού"
+
+#: views/admin-view.php:333
+msgid "Description for menu item"
+msgstr "Περιγραφή για στοιχείο μενού"
+
+#: views/admin-view.php:339
+msgid "Add Item"
+msgstr "Προσθήκη Στοιχείου"
+
+#: views/admin-view.php:366
+msgid "Please select at least one item to move."
+msgstr "Παρακαλώ επιλέξτε τουλάχιστον ένα στοιχείο για μετακίνηση."
+
+#: views/admin-view.php:372
+msgid "Please select a valid destination menu."
+msgstr "Παρακαλώ επιλέξτε ένα έγκυρο μενού προορισμού."

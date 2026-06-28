@@ -1,0 +1,47 @@
+name: "WordPress.org Release"
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name to deploy to WordPress.org (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  tag:
+    name: "build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Verify tag is on main branch
+        run: |
+          git fetch origin main
+          if git merge-base --is-ancestor ${{ github.event.inputs.tag }} origin/main; then
+            echo "Success: Tag is on the main branch."
+          else
+            echo "Error: Tag was not pushed to the main branch. Skipping release."
+            exit 1
+          fi
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Bundle plugin zip
+        run: bun install && bun run bundle
+
+      - name: Install SVN
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: WordPress Plugin Deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: "navsweeper"

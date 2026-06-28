@@ -7,7 +7,11 @@
  * Author:            Marios Giannopoulos
  * Author URI:        https://github.com/mgiannopoulos24
  * License:           GPL v3
+ * Requires PHP:      8.3
+ * Tested up to:      7.0
  * Text Domain:       navsweeper
+ *
+ * @package           NavSweeper
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +28,15 @@ if ( ! defined( 'NAVSWEEPER_URL' ) ) {
 	define( 'NAVSWEEPER_URL', plugin_dir_url( __FILE__ ) );
 }
 
-$class_file = NAVSWEEPER_PATH . 'includes/class-navsweeper.php';
+add_action( 'plugins_loaded', 'navsweeper_load_textdomain' );
+/**
+ * Load plugin textdomain.
+ */
+function navsweeper_load_textdomain() {
+	load_plugin_textdomain( 'navsweeper', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+$class_file = NAVSWEEPER_PATH . 'includes/class-navsweeper-plugin.php';
 
 if ( ! file_exists( $class_file ) ) {
 	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {

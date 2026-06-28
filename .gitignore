@@ -1,8 +1,12 @@
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 
-# Dependencies
+# Dev Dependencies
 node_modules/
+vendor/
 
 # Build
-*.zip
+build/
+
+# Env
+.env

@@ -1,29 +1,28 @@
 {
   "name": "navsweeper",
-  "version": "1.0.0",
   "description": "Expand your menu capabilities. Bulk select and delete navigation menu items easily.",
+  "version": "1.0.0",
+  "author": "Marios Giannopoulos",
   "repository": {
     "type": "git",
     "url": "https://github.com/mgiannopoulos24/navsweeper"
   },
-  "author": "Marios Giannopoulos",
-  "license": "GPL-3",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "start": "wp-env start",
-    "setup": "wp-env run cli wp eval-file scripts/setup-menus.php",
-    "start:setup": "wp-env start && bun run setup",
     "stop": "wp-env stop",
     "destroy": "wp-env destroy",
     "shell": "wp-env run cli /bin/bash",
-    "bundle": "bunx bestzip navsweeper.zip navsweeper.php includes/ views/ assets/",
-    "lint": "phplint '*.php' 'includes/**/*.php' 'views/**/*.php'"
+    "seed": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp eval-file scripts/setup-menus.php",
+    "lint:php": "vendor/bin/phpcs --standard=phpcs.xml .",
+    "lint:php:fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
+    "make-pot": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp i18n make-pot . languages/navsweeper.pot --ignore-domain",
+    "update-po": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper bash -c 'for f in languages/*.po; do wp i18n update-po \"$f\" .; done'",
+    "make-mo": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp i18n make-mo languages/",
+    "bundle": "mkdir -p build && bunx bestzip navsweeper.zip navsweeper.php includes/ views/ assets/"
   },
-  "devDependencies": {
-    "@wordpress/env": "^10.37.0",
-    "bestzip": "^2.2.1"
-  },
-  "dependencies": {
-    "install": "^0.13.0",
-    "phplint": "^2.0.5"
+    "devDependencies": {
+    "@wordpress/env": "^11.9.0",
+    "bestzip": "^3.0.1"
   }
 }

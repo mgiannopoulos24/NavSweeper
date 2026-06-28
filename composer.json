@@ -1,0 +1,33 @@
+{
+    "name": "mgiannopoulos24/navsweeper",
+    "description": "Expand your menu capabilities. Bulk select, delete, move, and edit navigation menu items.",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "navigation",
+        "menu",
+        "bulk"
+    ],
+    "version": "1.0.0",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Marios Giannopoulos",
+            "email": "mariosgian_2002@yahoo.gr",
+            "homepage": "https://github.com/mgiannopoulos24"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.13.4",
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/php-compatibility": "^9.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

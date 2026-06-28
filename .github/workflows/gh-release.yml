@@ -1,0 +1,56 @@
+name: "GitHub Release"
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name to release (e.g., v1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Verify tag is on main branch
+        run: |
+          git fetch origin main
+          if git merge-base --is-ancestor ${{ github.event.inputs.tag }} origin/main; then
+            echo "Success: Tag is on the main branch."
+          else
+            echo "Error: Tag was not pushed to the main branch. Skipping release."
+            exit 1
+          fi
+
+      - name: Get tag message for release body
+        id: tag_message
+        run: |
+          MESSAGE=$(git tag -l --format='%(contents)' ${{ github.event.inputs.tag }})
+          if [ -z "$MESSAGE" ]; then
+            MESSAGE=$(git log -1 --format=%s ${{ github.event.inputs.tag }})
+          fi
+          MESSAGE="${MESSAGE//'%'/'%25'}"
+          MESSAGE="${MESSAGE//$'\n'/'%0A'}"
+          MESSAGE="${MESSAGE//$'\r'/'%0D'}"
+          echo "body=$MESSAGE" >> $GITHUB_OUTPUT
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Bundle plugin zip
+        run: bun install && bun run bundle
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag }}
+          body: ${{ steps.tag_message.outputs.body }}
+          files: navsweeper.zip

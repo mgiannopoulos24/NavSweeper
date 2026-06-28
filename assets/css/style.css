@@ -1,28 +1,18 @@
-/* ============================================
-   NavSweeper Stylesheet
-   ============================================ */
-
-/* ============================================
-   General Layout & Utilities
-   ============================================ */
-
 /* Empty menu card */
-.card.navsweeper-empty-menu {
+.card.nsw-empty-menu {
     margin-top: 20px;
 }
 
-/* ============================================
-   Table Styles
-   ============================================ */
+/*** Table Styles ***/
 
 /* Table row height and vertical centering */
-.navsweeper-menu-item-row {
+.nsw-menu-item-row {
     position: relative;
     height: 40px;
 }
 
-.navsweeper-menu-item-row td,
-.navsweeper-menu-item-row th {
+.nsw-menu-item-row td,
+.nsw-menu-item-row th {
     vertical-align: middle;
     height: 40px;
 }
@@ -65,11 +55,9 @@
     width: 50px;
 }
 
-/* ============================================
-   Menu Selector
-   ============================================ */
+/*** Menu Selector ***/
 
-.navsweeper-menu-selector {
+.nsw-menu-selector {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -77,37 +65,44 @@
     flex-wrap: wrap;
 }
 
-.navsweeper-menu-selector select {
+.nsw-menu-selector select {
     min-width: 200px;
 }
 
-.navsweeper-menu-selector .button {
+.nsw-menu-selector .button {
     margin: 0;
 }
 
-/* ============================================
-   Action Bar Styles
-   ============================================ */
+/*** Action Bar Styles ***/
 
-.navsweeper-action-bar {
+.nsw-action-bar {
     margin-top: 20px;
 }
 
 /* Delete Section */
-.navsweeper-delete-section {
+.nsw-delete-section {
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
-.navsweeper-delete-section .button-link-delete {
+.nsw-delete-section .button-link-delete {
     text-decoration: none;
     border: 1px solid #d63638;
+    color: #d63638;
     padding: 0 10px;
     line-height: 2;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.nsw-delete-section .button-link-delete:hover {
+    background-color: #d63638;
+    border-color: #d63638;
+    color: #fff;
 }
 
 /* Move Section */
-.navsweeper-move-section {
+.nsw-move-section {
     padding: 10px;
     background: #fff;
     border: 1px solid #ccc;
@@ -115,25 +110,25 @@
     margin-bottom: 15px;
 }
 
-.navsweeper-move-section strong {
+.nsw-move-section strong {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
 }
 
-.navsweeper-move-section-inner {
+.nsw-move-section-inner {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.navsweeper-move-section label {
+.nsw-move-section label {
     font-weight: 600;
     margin: 0;
 }
 
-.navsweeper-move-section select {
+.nsw-move-section select {
     min-width: 200px;
     padding: 5px;
     height: 30px;
@@ -141,24 +136,22 @@
 }
 
 /* Bulk Edit Section */
-.navsweeper-bulk-edit-section {
+.nsw-bulk-edit-section {
     padding: 10px;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.navsweeper-bulk-edit-section strong {
+.nsw-bulk-edit-section strong {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
 }
 
-/* ============================================
-   Modal Styles
-   ============================================ */
+/*** Modal Styles ***/
 
-.navsweeper-modal {
+.nsw-modal {
     display: none;
     position: fixed;
     z-index: 100000;
@@ -168,10 +161,10 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-    animation: navsweeper-fadeIn 0.2s;
+    animation: nsw-fadeIn 0.2s;
 }
 
-@keyframes navsweeper-fadeIn {
+@keyframes nsw-fadeIn {
     from {
         opacity: 0;
     }
@@ -180,7 +173,7 @@
     }
 }
 
-.navsweeper-modal-content {
+.nsw-modal-content {
     background-color: #fff;
     margin: 5% auto;
     padding: 0;
@@ -189,10 +182,10 @@
     width: 90%;
     max-width: 600px;
     border-radius: 4px;
-    animation: navsweeper-slideDown 0.3s;
+    animation: nsw-slideDown 0.3s;
 }
 
-@keyframes navsweeper-slideDown {
+@keyframes nsw-slideDown {
     from {
         transform: translateY(-50px);
         opacity: 0;
@@ -203,7 +196,7 @@
     }
 }
 
-.navsweeper-modal-header {
+.nsw-modal-header {
     padding: 15px 20px;
     background-color: #f6f7f7;
     border-bottom: 1px solid #ccd0d4;
@@ -213,14 +206,14 @@
     border-radius: 4px 4px 0 0;
 }
 
-.navsweeper-modal-header h2 {
+.nsw-modal-header h2 {
     margin: 0;
     font-size: 18px;
     font-weight: 600;
     color: #1d2327;
 }
 
-.navsweeper-modal-close {
+.nsw-modal-close {
     color: #787c82;
     font-size: 28px;
     font-weight: bold;
@@ -229,22 +222,22 @@
     transition: color 0.2s;
 }
 
-.navsweeper-modal-close:hover,
-.navsweeper-modal-close:focus {
+.nsw-modal-close:hover,
+.nsw-modal-close:focus {
     color: #1d2327;
 }
 
-.navsweeper-modal-body {
+.nsw-modal-body {
     padding: 20px;
     max-height: 70vh;
     overflow-y: auto;
 }
 
-.navsweeper-modal-body .description {
+.nsw-modal-body .description {
     margin-bottom: 15px;
 }
 
-.navsweeper-modal-footer {
+.nsw-modal-footer {
     padding: 15px 20px;
     background-color: #f6f7f7;
     border-top: 1px solid #ccd0d4;
@@ -254,25 +247,23 @@
     border-radius: 0 0 4px 4px;
 }
 
-.navsweeper-modal-footer .button {
+.nsw-modal-footer .button {
     margin: 0;
 }
 
-/* ============================================
-   Form Field Styles
-   ============================================ */
+/*** Form Field Styles ***/
 
-.navsweeper-edit-field {
+.nsw-edit-field {
     padding: 10px 0;
     margin-bottom: 15px;
 }
 
-.navsweeper-edit-field label {
+.nsw-edit-field label {
     cursor: pointer;
 }
 
 /* Flex label for checkbox fields */
-.navsweeper-edit-field label.navsweeper-label-flex {
+.nsw-edit-field label.nsw-label-flex {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -280,12 +271,12 @@
 }
 
 /* Block label for regular fields */
-.navsweeper-edit-field label.navsweeper-label-block {
+.nsw-edit-field label.nsw-label-block {
     display: block;
     margin-bottom: 5px;
 }
 
-.navsweeper-edit-field .description {
+.nsw-edit-field .description {
     margin-top: 5px;
     margin-bottom: 0;
     font-style: italic;
@@ -293,24 +284,22 @@
     font-size: 13px;
 }
 
-.navsweeper-edit-field input[type="text"],
-.navsweeper-edit-field input[type="url"],
-.navsweeper-edit-field textarea,
-.navsweeper-edit-field select {
+.nsw-edit-field input[type="text"],
+.nsw-edit-field input[type="url"],
+.nsw-edit-field textarea,
+.nsw-edit-field select {
     margin-top: 5px;
     width: 100%;
 }
 
 /* Required field indicator */
-.navsweeper-required-asterisk {
+.nsw-required-asterisk {
     color: #d63638;
 }
 
-/* ============================================
-   Add Menu Item Button Styles
-   ============================================ */
+/*** Add Menu Item Button ***/
 
-.navsweeper-add-item-btn {
+.nsw-add-item-btn {
     display: flex;
     background: #2271b1;
     color: #fff;
@@ -329,7 +318,7 @@
     justify-content: center;
 }
 
-.navsweeper-add-icon {
+.nsw-add-icon {
     display: inline-block;
     color: #fff;
     line-height: 1;
@@ -338,11 +327,9 @@
     font-size: 16px;
 }
 
-/* ============================================
-   Dropdown Menu for Add Button
-   ============================================ */
+/*** Add Button Dropdown Menu ***/
 
-.navsweeper-add-dropdown {
+.nsw-add-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
@@ -356,11 +343,11 @@
     display: none;
 }
 
-.navsweeper-add-dropdown.show {
+.nsw-add-dropdown.show {
     display: block;
 }
 
-.navsweeper-add-dropdown-item {
+.nsw-add-dropdown-item {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -372,58 +359,56 @@
     transition: background-color 0.2s;
 }
 
-.navsweeper-add-dropdown-item i {
+.nsw-add-dropdown-item i {
     font-size: 12px;
     width: 14px;
     text-align: center;
 }
 
-.navsweeper-add-dropdown-item:last-child {
+.nsw-add-dropdown-item:last-child {
     border-bottom: none;
 }
 
-.navsweeper-add-dropdown-item:hover {
+.nsw-add-dropdown-item:hover {
     background-color: #f6f7f7;
 }
 
-.navsweeper-add-dropdown-item:focus {
+.nsw-add-dropdown-item:focus {
     outline: 2px solid #2271b1;
     outline-offset: -2px;
 }
 
-/* ============================================
-   Responsive Styles
-   ============================================ */
+/*** Responsive Styles ***/
 
 @media screen and (max-width: 782px) {
-    .navsweeper-modal-content {
+    .nsw-modal-content {
         width: 95%;
         margin: 10% auto;
     }
 
-    .navsweeper-modal-body {
+    .nsw-modal-body {
         padding: 15px;
     }
 
-    .navsweeper-modal-header,
-    .navsweeper-modal-footer {
+    .nsw-modal-header,
+    .nsw-modal-footer {
         padding: 12px 15px;
     }
 
-    .navsweeper-add-item-btn {
+    .nsw-add-item-btn {
         display: inline-block;
     }
 
-    .navsweeper-menu-selector {
+    .nsw-menu-selector {
         flex-direction: column;
         align-items: stretch;
     }
 
-    .navsweeper-menu-selector select {
+    .nsw-menu-selector select {
         width: 100%;
     }
 
-    .navsweeper-menu-selector .button {
+    .nsw-menu-selector .button {
         width: 100%;
     }
 }

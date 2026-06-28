@@ -54,23 +54,16 @@ This project uses [Bun](https://bun.sh) as the package manager and [@wordpress/e
 
 4. **Setup test menus (optional)**
    ```bash
-   bun run setup
+   bun run seed
    ```
    This creates sample menus for testing purposes.
-
-5. **Start with setup (one command)**
-   ```bash
-   bun run start:setup
-   ```
-   This combines starting the environment and setting up test menus.
 
 ## Available Scripts
 
 ### Development Scripts
 
 - `bun run start` - Start the local WordPress environment using wp-env
-- `bun run setup` - Run the setup script to create test menus
-- `bun run start:setup` - Start the environment and setup test menus in one command
+- `bun run seed` - Run the setup script to create test menus
 - `bun run stop` - Stop the WordPress environment
 - `bun run destroy` - Destroy the WordPress environment (removes all data)
 - `bun run shell` - Open a bash shell in the WordPress CLI container
@@ -78,7 +71,7 @@ This project uses [Bun](https://bun.sh) as the package manager and [@wordpress/e
 ### Build Scripts
 
 - `bun run bundle` - Create a distribution zip file (`navsweeper.zip`) containing the plugin files
-- `bun run lint` - Run PHP linting on all PHP files in the project
+- `bun run lint:php` - Run PHP linting on all PHP files in the project
 
 ## Usage
 
@@ -99,7 +92,7 @@ navsweeper/
 │   ├── css/         # Stylesheets
 │   └── js/          # JavaScript files
 ├── includes/        # PHP class files
-│   └── class-navsweeper.php
+│   └── class-navsweeper-plugin.php
 ├── views/           # Admin view templates
 │   └── admin-view.php
 ├── scripts/         # Setup and utility scripts

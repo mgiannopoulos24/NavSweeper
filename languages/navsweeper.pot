@@ -1,0 +1,352 @@
+# Copyright (C) 2026 Marios Giannopoulos
+# This file is distributed under the GPL v3.
+msgid ""
+msgstr ""
+"Project-Id-Version: NavSweeper 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/navsweeper\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-28T12:44:47+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+
+#. Plugin Name of the plugin
+#: navsweeper.php
+#: includes/class-navsweeper-plugin.php:128
+#: includes/class-navsweeper-plugin.php:129
+#: views/admin-view.php:17
+msgid "NavSweeper"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: navsweeper.php
+msgid "https://github.com/mgiannopoulos24/navsweeper"
+msgstr ""
+
+#. Description of the plugin
+#: navsweeper.php
+msgid "Expand your menu capabilities. Bulk select, delete, and move navigation menu items."
+msgstr ""
+
+#. Author of the plugin
+#: navsweeper.php
+msgid "Marios Giannopoulos"
+msgstr ""
+
+#. Author URI of the plugin
+#: navsweeper.php
+msgid "https://github.com/mgiannopoulos24"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:57
+msgid "Please select at least one menu item to edit."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:58
+#: views/admin-view.php:57
+msgid "Please select at least one field to update."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:59
+msgid "Please provide values for all selected fields."
+msgstr ""
+
+#. translators: %d: number of items
+#: includes/class-navsweeper-plugin.php:61
+#, php-format
+msgid "Are you sure you want to update %d item(s)?"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:62
+msgid "Please select at least one menu item to move."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:63
+#: views/admin-view.php:55
+msgid "Please select a destination menu."
+msgstr ""
+
+#. translators: %d: number of items
+#: includes/class-navsweeper-plugin.php:65
+#, php-format
+msgid "Are you sure you want to move %d item(s) within the current menu?"
+msgstr ""
+
+#. translators: %1$d: number of items, %2$s: destination menu name
+#: includes/class-navsweeper-plugin.php:67
+#, php-format
+msgid "Are you sure you want to move %1$d item(s) to \"%2$s\"?"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:68
+msgid "Items will be reorganized as top-level items."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:69
+#: views/admin-view.php:168
+msgid "(current)"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:85
+msgid "Add Above"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:86
+msgid "Add Below"
+msgstr ""
+
+#. translators: %s: menu item title
+#: includes/class-navsweeper-plugin.php:88
+#, php-format
+msgid "above \"%s\""
+msgstr ""
+
+#. translators: %s: menu item title
+#: includes/class-navsweeper-plugin.php:90
+#, php-format
+msgid "below \"%s\""
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:91
+msgid "Please enter a label for the menu item."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:92
+msgid "Please enter a URL for the menu item."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:116
+msgid "Primary Menu"
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:146
+msgid "Security check failed. Please try again."
+msgstr ""
+
+#: includes/class-navsweeper-plugin.php:150
+msgid "You do not have permission to edit menus."
+msgstr ""
+
+#. translators: %s: file path
+#: includes/class-navsweeper-plugin.php:497
+#, php-format
+msgid "Error: View file not found at %s"
+msgstr ""
+
+#: views/admin-view.php:27
+msgid "deleted"
+msgstr ""
+
+#: views/admin-view.php:28
+msgid "moved"
+msgstr ""
+
+#: views/admin-view.php:29
+msgid "added"
+msgstr ""
+
+#: views/admin-view.php:30
+msgid "edited"
+msgstr ""
+
+#. translators: %1$s is the action type, %2$d is the number of items.
+#: views/admin-view.php:39
+#, php-format
+msgid "Successfully %1$s %2$d menu item."
+msgid_plural "Successfully %1$s %2$d menu items."
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/admin-view.php:54
+msgid "Invalid destination menu."
+msgstr ""
+
+#: views/admin-view.php:56
+msgid "No items selected."
+msgstr ""
+
+#: views/admin-view.php:58
+msgid "Please fill in all required fields (Label and URL)."
+msgstr ""
+
+#: views/admin-view.php:59
+msgid "Failed to add menu item. Please try again."
+msgstr ""
+
+#: views/admin-view.php:61
+msgid "An error occurred."
+msgstr ""
+
+#: views/admin-view.php:69
+msgid "No menus found. Create a menu in Appearance > Menus first."
+msgstr ""
+
+#: views/admin-view.php:77
+msgid "Select Menu"
+msgstr ""
+
+#: views/admin-view.php:85
+msgid "Load Menu Items"
+msgstr ""
+
+#: views/admin-view.php:96
+msgid "This menu is empty."
+msgstr ""
+
+#: views/admin-view.php:109
+msgid "Link Text (Label)"
+msgstr ""
+
+#: views/admin-view.php:110
+#: views/admin-view.php:223
+#: views/admin-view.php:300
+msgid "URL"
+msgstr ""
+
+#: views/admin-view.php:111
+msgid "Type"
+msgstr ""
+
+#: views/admin-view.php:135
+msgid "Add menu item"
+msgstr ""
+
+#: views/admin-view.php:152
+msgid "Delete Selected"
+msgstr ""
+
+#: views/admin-view.php:153
+msgid "Are you sure you want to delete these items?"
+msgstr ""
+
+#: views/admin-view.php:158
+msgid "Bulk Move Menu Items"
+msgstr ""
+
+#: views/admin-view.php:160
+msgid "Move selected to:"
+msgstr ""
+
+#: views/admin-view.php:162
+msgid "Select Destination Menu"
+msgstr ""
+
+#: views/admin-view.php:179
+msgid "Move Items"
+msgstr ""
+
+#: views/admin-view.php:185
+#: views/admin-view.php:197
+msgid "Bulk Edit Menu Items"
+msgstr ""
+
+#: views/admin-view.php:187
+msgid "Edit Selected Items"
+msgstr ""
+
+#: views/admin-view.php:207
+msgid "Only check the fields you want to update. Leave fields unchecked to keep their current values."
+msgstr ""
+
+#: views/admin-view.php:214
+#: views/admin-view.php:292
+msgid "Label (Link Text)"
+msgstr ""
+
+#: views/admin-view.php:216
+msgid "New label for all selected items"
+msgstr ""
+
+#: views/admin-view.php:232
+#: views/admin-view.php:308
+msgid "CSS Classes"
+msgstr ""
+
+#: views/admin-view.php:234
+#: views/admin-view.php:310
+msgid "class1 class2 class3"
+msgstr ""
+
+#: views/admin-view.php:235
+#: views/admin-view.php:311
+msgid "Separate multiple classes with spaces."
+msgstr ""
+
+#: views/admin-view.php:242
+#: views/admin-view.php:317
+msgid "Link Target"
+msgstr ""
+
+#: views/admin-view.php:245
+#: views/admin-view.php:320
+msgid "Same window/tab"
+msgstr ""
+
+#: views/admin-view.php:246
+#: views/admin-view.php:321
+msgid "New window/tab"
+msgstr ""
+
+#: views/admin-view.php:247
+#: views/admin-view.php:322
+msgid "Same window/tab (explicit)"
+msgstr ""
+
+#: views/admin-view.php:248
+#: views/admin-view.php:323
+msgid "Parent frame"
+msgstr ""
+
+#: views/admin-view.php:249
+#: views/admin-view.php:324
+msgid "Top frame"
+msgstr ""
+
+#: views/admin-view.php:257
+#: views/admin-view.php:331
+msgid "Description"
+msgstr ""
+
+#: views/admin-view.php:259
+msgid "Description for menu items"
+msgstr ""
+
+#: views/admin-view.php:264
+#: views/admin-view.php:338
+msgid "Cancel"
+msgstr ""
+
+#: views/admin-view.php:265
+msgid "Update Items"
+msgstr ""
+
+#: views/admin-view.php:275
+msgid "Add New Menu Item"
+msgstr ""
+
+#: views/admin-view.php:286
+msgid "Add new menu item:"
+msgstr ""
+
+#: views/admin-view.php:294
+msgid "Menu item label"
+msgstr ""
+
+#: views/admin-view.php:333
+msgid "Description for menu item"
+msgstr ""
+
+#: views/admin-view.php:339
+msgid "Add Item"
+msgstr ""
+
+#: views/admin-view.php:366
+msgid "Please select at least one item to move."
+msgstr ""
+
+#: views/admin-view.php:372
+msgid "Please select a valid destination menu."
+msgstr ""
