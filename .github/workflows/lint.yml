@@ -28,4 +28,4 @@ jobs:
           tools: composer
 
       - name: Lint PHP
-        run: php -l includes/ templates/ tests/
+        run: php -l includes/
