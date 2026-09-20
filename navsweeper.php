@@ -1,52 +1,52 @@
 <?php
 /**
- * Plugin Name:       NavSweeper
- * Plugin URI:        https://github.com/mgiannopoulos24/navsweeper
- * Description:       Expand your menu capabilities. Bulk select, delete, and move navigation menu items.
- * Version:           1.0.0
- * Author:            Marios Giannopoulos
- * Author URI:        https://github.com/mgiannopoulos24
- * License:           GPL v3
- * Requires PHP:      8.3
- * Tested up to:      7.0
- * Text Domain:       navsweeper
+ * Plugin Name: NavSweeper
+ * Plugin URI: https://github.com/mgiannopoulos24/navsweeper
+ * Description: Expand your menu capabilities. Bulk select, delete, and move navigation menu items.
+ * Version: 1.0.0
+ * Requires at least: 6.5
+ * Tested up to: 7.1
+ * Requires PHP: 8.1
+ * Author: Marios Giannopoulos
+ * Author URI: https://github.com/mgiannopoulos24
+ * License: GNU General Public License v3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * Text Domain: navsweeper
+ * Domain Path: /languages
  *
- * @package           NavSweeper
+ * @package NavSweeper
  */
 
+/**
+ * Exit if accessed directly
+ */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! defined( 'NAVSWEEPER_VERSION' ) ) {
-	define( 'NAVSWEEPER_VERSION', '1.0.0' );
-}
-if ( ! defined( 'NAVSWEEPER_PATH' ) ) {
-	define( 'NAVSWEEPER_PATH', plugin_dir_path( __FILE__ ) );
-}
-if ( ! defined( 'NAVSWEEPER_URL' ) ) {
-	define( 'NAVSWEEPER_URL', plugin_dir_url( __FILE__ ) );
-}
-
-add_action( 'plugins_loaded', 'navsweeper_load_textdomain' );
 /**
- * Load plugin textdomain.
+ * Define plugin constants
  */
-function navsweeper_load_textdomain() {
-	load_plugin_textdomain( 'navsweeper', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+define( 'NAVSWEEPER_VERSION', '1.0.0' );
+define( 'NAVSWEEPER_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'NAVSWEEPER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'NAVSWEEPER_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
+/**
+ * Initialize the plugin
+ */
+require_once NAVSWEEPER_PLUGIN_DIR . 'includes/class-navsweeper-plugin.php';
+
+/**
+ * Get the main plugin instance
+ *
+ * @return NavSweeper_Plugin
+ */
+function navsweeper() {
+	return NavSweeper_Plugin::get_instance();
 }
 
-$class_file = NAVSWEEPER_PATH . 'includes/class-navsweeper-plugin.php';
-
-if ( ! file_exists( $class_file ) ) {
-	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		error_log( 'NavSweeper Error: Class file not found at ' . $class_file );
-	}
-	return;
-}
-
-require_once $class_file;
-
-if ( class_exists( 'NavSweeper_Plugin' ) ) {
-	new NavSweeper_Plugin();
-}
+/**
+ * Initialize the plugin
+ */
+navsweeper();

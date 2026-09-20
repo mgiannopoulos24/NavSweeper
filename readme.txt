@@ -2,11 +2,11 @@
 Contributors: mgiannopoulos24
 Donate link: https://github.com/sponsors/mgiannopoulos24
 Tags: navigation, menu, nav menu, bulk, menu management, bulk delete, menu items
-Requires at least: 5.0
-Tested up to: 7.0
-Requires PHP: 8.3
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.1
 Stable tag: 1.0.0
-License: GPLv3 or later
+License: GNU General Public License v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Expand your menu capabilities. Bulk select, delete, move, and edit navigation menu items with ease.

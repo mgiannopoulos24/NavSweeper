@@ -15,13 +15,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 class NavSweeper_Plugin {
 
 	/**
-	 * Constructor. Hooks into WordPress.
+	 * Plugin instance.
+	 *
+	 * @var NavSweeper_Plugin
 	 */
-	public function __construct() {
+	private static $instance = null;
+
+	/**
+	 * Get plugin instance.
+	 *
+	 * @return NavSweeper_Plugin
+	 */
+	public static function get_instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * Constructor.
+	 */
+	private function __construct() {
+		$this->init();
+	}
+
+	/**
+	 * Initialize plugin.
+	 */
+	private function init() {
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'handle_form_submission' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'after_setup_theme', array( $this, 'ensure_menu_support' ), 20 );
+	}
+
+	/**
+	 * Load plugin text domain.
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain(
+			'navsweeper',
+			false,
+			dirname( NAVSWEEPER_PLUGIN_BASENAME ) . '/languages'
+		);
 	}
 
 	/**
@@ -34,24 +72,28 @@ class NavSweeper_Plugin {
 			return;
 		}
 
-		// Enqueue Font Awesome for icons.
-		wp_enqueue_style(
-			'font-awesome',
-			NAVSWEEPER_URL . 'assets/css/all.min.css',
-			array(),
-			'6.4.0'
-		);
+		// Dashicons (WordPress core) provides the admin icons.
+		wp_enqueue_style( 'dashicons' );
 
 		wp_enqueue_script(
-			'nsw-js',
-			NAVSWEEPER_URL . 'assets/js/index.js',
+			'nsw-modal',
+			NAVSWEEPER_PLUGIN_URL . 'assets/js/nsw-modal.js',
 			array(),
 			NAVSWEEPER_VERSION,
 			true
 		);
 
+		wp_enqueue_script(
+			'nsw-table',
+			NAVSWEEPER_PLUGIN_URL . 'assets/js/nsw-table.js',
+			array( 'nsw-modal' ),
+			NAVSWEEPER_VERSION,
+			true
+		);
+
+		// Shared strings for the table and bulk-edit scripts (bulk-edit loads after table).
 		wp_localize_script(
-			'nsw-js',
+			'nsw-table',
 			'nswI18n',
 			array(
 				'selectEditItems'   => __( 'Please select at least one menu item to edit.', 'navsweeper' ),
@@ -59,6 +101,7 @@ class NavSweeper_Plugin {
 				'provideValues'     => __( 'Please provide values for all selected fields.', 'navsweeper' ),
 				/* translators: %d: number of items */
 				'confirmUpdate'     => __( 'Are you sure you want to update %d item(s)?', 'navsweeper' ),
+				'confirmDelete'     => __( 'Are you sure you want to delete these items?', 'navsweeper' ),
 				'selectMoveItems'   => __( 'Please select at least one menu item to move.', 'navsweeper' ),
 				'selectDestination' => __( 'Please select a destination menu.', 'navsweeper' ),
 				/* translators: %d: number of items */
@@ -71,15 +114,23 @@ class NavSweeper_Plugin {
 		);
 
 		wp_enqueue_script(
-			'nsw-add-item-js',
-			NAVSWEEPER_URL . 'assets/js/add-item.js',
-			array(),
+			'nsw-bulk-edit',
+			NAVSWEEPER_PLUGIN_URL . 'assets/js/nsw-bulk-edit.js',
+			array( 'nsw-modal', 'nsw-table' ),
+			NAVSWEEPER_VERSION,
+			true
+		);
+
+		wp_enqueue_script(
+			'nsw-add-item',
+			NAVSWEEPER_PLUGIN_URL . 'assets/js/nsw-add-item.js',
+			array( 'nsw-modal' ),
 			NAVSWEEPER_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'nsw-add-item-js',
+			'nsw-add-item',
 			'nswAddItemI18n',
 			array(
 				'addAbove'    => __( 'Add Above', 'navsweeper' ),
@@ -88,14 +139,12 @@ class NavSweeper_Plugin {
 				'aboveFormat' => __( 'above "%s"', 'navsweeper' ),
 				/* translators: %s: menu item title */
 				'belowFormat' => __( 'below "%s"', 'navsweeper' ),
-				'enterLabel'  => __( 'Please enter a label for the menu item.', 'navsweeper' ),
-				'enterURL'    => __( 'Please enter a URL for the menu item.', 'navsweeper' ),
 			)
 		);
 
 		wp_enqueue_style(
 			'nsw-css',
-			NAVSWEEPER_URL . 'assets/css/style.css',
+			NAVSWEEPER_PLUGIN_URL . 'assets/css/style.css',
 			array(),
 			NAVSWEEPER_VERSION
 		);
@@ -252,26 +301,29 @@ class NavSweeper_Plugin {
 				}
 
 				if ( null !== $reference_order ) {
-					// Calculate new menu order.
+					// Position is the post's menu_order column, not post meta.
 					$new_order = ( 'above' === $insert_position ) ? $reference_order : $reference_order + 1;
 
-					// Update menu order for the new item.
-					update_post_meta( $new_item_id, '_menu_item_menu_order', $new_order );
-
-					// Adjust menu orders for items that come after.
+					// Shift every item at or after the slot down by one.
 					foreach ( $menu_items as $item ) {
-						if ( $item->ID === $new_item_id ) {
+						if ( $item->ID === $new_item_id || $item->menu_order < $new_order ) {
 							continue;
 						}
 
-						$item_order = $item->menu_order;
-
-						if ( 'above' === $insert_position && $item_order >= $reference_order ) {
-							update_post_meta( $item->ID, '_menu_item_menu_order', $item_order + 1 );
-						} elseif ( 'below' === $insert_position && $item_order > $reference_order ) {
-							update_post_meta( $item->ID, '_menu_item_menu_order', $item_order + 1 );
-						}
+						wp_update_post(
+							array(
+								'ID'         => $item->ID,
+								'menu_order' => $item->menu_order + 1,
+							)
+						);
 					}
+
+					wp_update_post(
+						array(
+							'ID'         => $new_item_id,
+							'menu_order' => $new_order,
+						)
+					);
 				}
 			}
 
@@ -486,7 +538,7 @@ class NavSweeper_Plugin {
 			return;
 		}
 
-		$file_path = NAVSWEEPER_PATH . 'views/admin-view.php';
+		$file_path = NAVSWEEPER_PLUGIN_DIR . 'views/admin-view.php';
 
 		if ( file_exists( $file_path ) ) {
 			include $file_path;

@@ -8,5 +8,10 @@ vendor/
 # Build
 build/
 
+# Tests
+tests/**/test-results
+tests/**/playwright-report
+tests/**/.auth
+
 # Env
 .env

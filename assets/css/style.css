@@ -87,8 +87,8 @@
 
 .nsw-delete-section .button-link-delete {
     text-decoration: none;
-    border: 1px solid #d63638;
-    color: #d63638;
+    border: 1px solid #b32d2e;
+    color: #b32d2e;
     padding: 0 10px;
     line-height: 2;
     transition: all 0.2s ease;
@@ -214,12 +214,21 @@
 }
 
 .nsw-modal-close {
+    background: none;
+    border: none;
+    padding: 0;
     color: #787c82;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
     line-height: 1;
     transition: color 0.2s;
+}
+
+.nsw-modal-close:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 .nsw-modal-close:hover,
@@ -321,25 +330,27 @@
 .nsw-add-icon {
     display: inline-block;
     color: #fff;
-    line-height: 1;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
     margin: 0;
     padding: 0;
-    font-size: 16px;
 }
 
 /*** Add Button Dropdown Menu ***/
 
 .nsw-add-dropdown {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 50%;
+    right: calc(100% - 4px);
+    transform: translateY(-50%);
     background: #fff;
     border: 1px solid #ccd0d4;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     min-width: 150px;
-    margin-top: 4px;
     display: none;
 }
 
@@ -359,10 +370,10 @@
     transition: background-color 0.2s;
 }
 
-.nsw-add-dropdown-item i {
-    font-size: 12px;
-    width: 14px;
-    text-align: center;
+.nsw-add-dropdown-item .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
 }
 
 .nsw-add-dropdown-item:last-child {

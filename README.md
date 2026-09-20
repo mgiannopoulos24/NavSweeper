@@ -73,6 +73,14 @@ This project uses [Bun](https://bun.sh) as the package manager and [@wordpress/e
 - `bun run bundle` - Create a distribution zip file (`navsweeper.zip`) containing the plugin files
 - `bun run lint:php` - Run PHP linting on all PHP files in the project
 
+### Test Scripts
+
+- `bun run test:e2e:install` - Download the Chromium build Playwright needs (once)
+- `bun run test:e2e` - Run the Playwright end-to-end and axe accessibility tests against the wp-env site (started automatically if it is not running)
+- `bun run test:e2e:report` - Open the HTML report from the last run
+
+The specs live in `tests/e2e-pw/specs/`, grouped by feature (`admin-page/`, `bulk-actions/`, `add-item/`, `accessibility/`). Each test seeds its own menu through the REST API and deletes it afterwards, so the suite is safe to run against a site that already has menus and can run in parallel.
+
 ## Usage
 
 1. Navigate to **Appearance → NavSweeper** in your WordPress admin
@@ -96,7 +104,9 @@ navsweeper/
 ├── views/           # Admin view templates
 │   └── admin-view.php
 ├── scripts/         # Setup and utility scripts
-│   └── setup-menus.php
+│   └── seed.sh
+├── tests/
+│   └── e2e-pw/      # Playwright config, helpers and specs (by feature)
 ├── navsweeper.php   # Main plugin file
 ├── package.json     # Dependencies and scripts
 └── .wp-env.json     # WordPress environment configuration
@@ -105,7 +115,7 @@ navsweeper/
 ## Requirements
 
 - WordPress 5.0 or higher
-- PHP 8.3 or higher (for development)
+- PHP 8.1 or higher
 - Bun (for development)
 
 ## Development

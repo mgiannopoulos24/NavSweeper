@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build zip and publish GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+
+      - name: Check the tag matches the plugin header
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          ver="$(sed -n 's/^ \* Version: *//p' navsweeper.php | tr -d '\r')"
+          [ "$tag" = "$ver" ] || { echo "::error::Tag v$tag does not match navsweeper.php Version $ver"; exit 1; }
+
+      - run: bun run bundle
+
+      - name: Release notes from changelog.txt (top entry)
+        run: |
+          awk '/^= [0-9]+\.[0-9]+\.[0-9]+ =$/{n++; next} n==1{print} n==2{exit}' changelog.txt > notes.md
+          cat notes.md
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: NavSweeper ${{ github.ref_name }}
+          body_path: notes.md
+          files: build/navsweeper.zip

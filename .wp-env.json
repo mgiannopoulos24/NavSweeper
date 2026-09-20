@@ -1,7 +1,10 @@
 {
   "core": null,
-  "phpVersion": "8.3",
+  "phpVersion": "8.1",
   "themes": ["WordPress/twentytwentyfive"],
+  "plugins": [
+    "https://downloads.wordpress.org/plugin/plugin-check.zip"
+  ],
   "mappings": {
     "wp-content/plugins/navsweeper": "."
   },
@@ -15,6 +18,6 @@
     "WP_ENVIRONMENT_TYPE": "local"
   },
   "lifecycleScripts": {
-    "afterStart": "wp-env run cli bash -c 'curl -fsSL -o /tmp/wp-cli.phar https://github.com/wp-cli/builds/raw/gh-pages/phar/wp-cli.phar && chmod +x /tmp/wp-cli.phar && sudo cp /tmp/wp-cli.phar /usr/local/bin/wp && sudo chmod +x /usr/local/bin/wp'"
+    "afterStart": "wp-env run cli wp plugin activate navsweeper"
   }
 }

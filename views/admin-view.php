@@ -14,7 +14,7 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 ?>
 
 <div class="wrap">
-	<h1 class="wp-heading-inline"><?php _e( 'NavSweeper', 'navsweeper' ); ?></h1>
+	<h1 class="wp-heading-inline"><?php esc_html_e( 'NavSweeper', 'navsweeper' ); ?></h1>
 	<hr class="wp-header-end">
 
 	<!-- Success Notices -->
@@ -66,7 +66,7 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 	<?php endif; ?>
 
 	<?php if ( empty( $menus ) ) : ?>
-		<div class="notice notice-info"><p><?php _e( 'No menus found. Create a menu in Appearance > Menus first.', 'navsweeper' ); ?></p></div>
+		<div class="notice notice-info"><p><?php esc_html_e( 'No menus found. Create a menu in Appearance > Menus first.', 'navsweeper' ); ?></p></div>
 	<?php else : ?>
 
 		<!-- Menu Selector -->
@@ -74,7 +74,7 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 			<input type="hidden" name="page" value="nsw-bulk-delete" />
 			<div class="nsw-tablenav">
 				<div class="nsw-menu-selector">
-					<label for="menu_id" class="screen-reader-text"><?php _e( 'Select Menu', 'navsweeper' ); ?></label>
+					<label for="menu_id" class="screen-reader-text"><?php esc_html_e( 'Select Menu', 'navsweeper' ); ?></label>
 					<select name="menu_id" id="menu_id">
 						<?php foreach ( $menus as $menu_item ) : ?>
 							<option value="<?php echo esc_attr( $menu_item->term_id ); ?>" <?php selected( $selected_menu_id, $menu_item->term_id ); ?>>
@@ -93,7 +93,7 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 
 		<?php if ( ! $menu_items ) : ?>
 			<div class="card nsw-empty-menu">
-				<p><?php _e( 'This menu is empty.', 'navsweeper' ); ?></p>
+				<p><?php esc_html_e( 'This menu is empty.', 'navsweeper' ); ?></p>
 			</div>
 		<?php else : ?>
 			<form method="post" id="nsw-form" action="<?php echo esc_url( admin_url( 'themes.php?page=nsw-bulk-delete&menu_id=' . $selected_menu_id ) ); ?>">
@@ -104,12 +104,13 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 					<thead>
 						<tr>
 							<td id="cb" class="manage-column column-cb check-column">
+								<label class="screen-reader-text" for="cb-select-all-1"><?php esc_html_e( 'Select All', 'navsweeper' ); ?></label>
 								<input id="cb-select-all-1" type="checkbox">
 							</td>
-							<th scope="col" class="manage-column column-primary"><?php _e( 'Link Text (Label)', 'navsweeper' ); ?></th>
-							<th scope="col" class="manage-column"><?php _e( 'URL', 'navsweeper' ); ?></th>
-							<th scope="col" class="manage-column"><?php _e( 'Type', 'navsweeper' ); ?></th>
-							<th scope="col" class="manage-column column-add"></th>
+							<th scope="col" class="manage-column column-primary"><?php esc_html_e( 'Link Text (Label)', 'navsweeper' ); ?></th>
+							<th scope="col" class="manage-column"><?php esc_html_e( 'URL', 'navsweeper' ); ?></th>
+							<th scope="col" class="manage-column"><?php esc_html_e( 'Type', 'navsweeper' ); ?></th>
+							<th scope="col" class="manage-column column-add"><span class="screen-reader-text"><?php esc_html_e( 'Add item', 'navsweeper' ); ?></span></th>
 						</tr>
 					</thead>
 
@@ -121,7 +122,13 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 							?>
 							<tr class="nsw-menu-item-row" data-item-id="<?php echo esc_attr( $item->ID ); ?>" data-item-index="<?php echo esc_attr( $item_index ); ?>">
 								<th scope="row" class="check-column">
-									<input type="checkbox" name="menu_items_to_delete[]" value="<?php echo esc_attr( $item->ID ); ?>">
+									<label class="screen-reader-text" for="cb-select-<?php echo esc_attr( $item->ID ); ?>">
+										<?php
+										/* translators: %s: menu item title */
+										printf( esc_html__( 'Select %s', 'navsweeper' ), esc_html( $item->title ) );
+										?>
+									</label>
+									<input type="checkbox" id="cb-select-<?php echo esc_attr( $item->ID ); ?>" name="menu_items_to_delete[]" value="<?php echo esc_attr( $item->ID ); ?>">
 								</th>
 								<td class="column-primary">
 									<strong><?php echo esc_html( $item->title ); ?></strong>
@@ -132,8 +139,9 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 									<button type="button" class="nsw-add-item-btn"
 											data-item-id="<?php echo esc_attr( $item->ID ); ?>"
 											data-item-index="<?php echo esc_attr( $item_index ); ?>"
-											aria-label="<?php esc_attr_e( 'Add menu item', 'navsweeper' ); ?>">
-										<i class="fas fa-plus nsw-add-icon"></i>
+											aria-label="<?php esc_attr_e( 'Add menu item', 'navsweeper' ); ?>"
+											aria-haspopup="menu" aria-expanded="false">
+										<span class="dashicons dashicons-plus-alt2 nsw-add-icon" aria-hidden="true"></span>
 									</button>
 								</td>
 							</tr>
@@ -148,18 +156,18 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 					<div class="nsw-delete-section">
 						<input type="submit"
 								name="nsw_bulk_delete"
+								id="nsw_btn_delete"
 								class="button button-link-delete"
-								value="<?php esc_attr_e( 'Delete Selected', 'navsweeper' ); ?>"
-								onclick="return confirm('<?php echo esc_js( __( 'Are you sure you want to delete these items?', 'navsweeper' ) ); ?>');">
+								value="<?php esc_attr_e( 'Delete Selected', 'navsweeper' ); ?>">
 					</div>
 
 					<!-- Move Section -->
 					<div class="nsw-move-section">
-						<strong><?php _e( 'Bulk Move Menu Items', 'navsweeper' ); ?></strong>
+						<strong><?php esc_html_e( 'Bulk Move Menu Items', 'navsweeper' ); ?></strong>
 						<div class="nsw-move-section-inner">
-							<label for="destination_menu_id"><?php _e( 'Move selected to:', 'navsweeper' ); ?></label>
+							<label for="destination_menu_id"><?php esc_html_e( 'Move selected to:', 'navsweeper' ); ?></label>
 							<select name="destination_menu_id" id="destination_menu_id">
-								<option value="0"><?php _e( 'Select Destination Menu', 'navsweeper' ); ?></option>
+								<option value="0"><?php esc_html_e( 'Select Destination Menu', 'navsweeper' ); ?></option>
 								<?php foreach ( $menus as $menu_item ) : ?>
 									<option value="<?php echo esc_attr( $menu_item->term_id ); ?>" <?php selected( $selected_menu_id, $menu_item->term_id ); ?>>
 										<?php
@@ -182,20 +190,20 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 
 					<!-- Bulk Edit Section -->
 					<div class="nsw-bulk-edit-section">
-						<strong><?php _e( 'Bulk Edit Menu Items', 'navsweeper' ); ?></strong>
+						<strong><?php esc_html_e( 'Bulk Edit Menu Items', 'navsweeper' ); ?></strong>
 						<button type="button" id="nsw_btn_bulk_edit" class="button button-secondary">
-							<?php _e( 'Edit Selected Items', 'navsweeper' ); ?>
+							<?php esc_html_e( 'Edit Selected Items', 'navsweeper' ); ?>
 						</button>
 					</div>
 				</div>
 			</form>
 
 			<!-- Bulk Edit Modal -->
-			<div id="nsw-bulk-edit-modal" class="nsw-modal">
+			<div id="nsw-bulk-edit-modal" class="nsw-modal" role="dialog" aria-modal="true" aria-labelledby="nsw-bulk-edit-modal-title">
 				<div class="nsw-modal-content">
 					<div class="nsw-modal-header">
-						<h2><?php _e( 'Bulk Edit Menu Items', 'navsweeper' ); ?></h2>
-						<span class="nsw-modal-close">&times;</span>
+						<h2 id="nsw-bulk-edit-modal-title"><?php esc_html_e( 'Bulk Edit Menu Items', 'navsweeper' ); ?></h2>
+						<button type="button" class="nsw-modal-close" aria-label="<?php esc_attr_e( 'Close', 'navsweeper' ); ?>">&times;</button>
 					</div>
 					<form method="post" id="nsw-bulk-edit-form" action="<?php echo esc_url( admin_url( 'themes.php?page=nsw-bulk-delete&menu_id=' . $selected_menu_id ) ); ?>">
 						<?php wp_nonce_field( 'nsw_action', 'nsw_nonce' ); ?>
@@ -204,49 +212,49 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 
 						<div class="nsw-modal-body">
 							<p class="description">
-								<?php _e( 'Only check the fields you want to update. Leave fields unchecked to keep their current values.', 'navsweeper' ); ?>
+								<?php esc_html_e( 'Only check the fields you want to update. Leave fields unchecked to keep their current values.', 'navsweeper' ); ?>
 							</p>
 
 							<!-- Label Field -->
 							<div class="nsw-edit-field">
 								<label class="nsw-label-flex">
 									<input type="checkbox" name="bulk_edit_fields[]" value="label" class="nsw-field-checkbox">
-									<strong><?php _e( 'Label (Link Text)', 'navsweeper' ); ?></strong>
+									<strong id="nsw-bulk-edit-label-label"><?php esc_html_e( 'Label (Link Text)', 'navsweeper' ); ?></strong>
 								</label>
-								<input type="text" name="bulk_edit_label" class="regular-text" placeholder="<?php esc_attr_e( 'New label for all selected items', 'navsweeper' ); ?>">
+								<input type="text" name="bulk_edit_label" id="bulk_edit_label" aria-labelledby="nsw-bulk-edit-label-label" class="regular-text" placeholder="<?php esc_attr_e( 'New label for all selected items', 'navsweeper' ); ?>">
 							</div>
 
 							<!-- URL Field -->
 							<div class="nsw-edit-field">
 								<label class="nsw-label-flex">
 									<input type="checkbox" name="bulk_edit_fields[]" value="url" class="nsw-field-checkbox">
-									<strong><?php _e( 'URL', 'navsweeper' ); ?></strong>
+									<strong id="nsw-bulk-edit-url-label"><?php esc_html_e( 'URL', 'navsweeper' ); ?></strong>
 								</label>
-								<input type="url" name="bulk_edit_url" class="regular-text" placeholder="https://example.com">
+								<input type="url" name="bulk_edit_url" id="bulk_edit_url" aria-labelledby="nsw-bulk-edit-url-label" class="regular-text" placeholder="https://example.com">
 							</div>
 
 							<!-- CSS Classes Field -->
 							<div class="nsw-edit-field">
 								<label class="nsw-label-flex">
 									<input type="checkbox" name="bulk_edit_fields[]" value="css_classes" class="nsw-field-checkbox">
-									<strong><?php _e( 'CSS Classes', 'navsweeper' ); ?></strong>
+									<strong id="nsw-bulk-edit-css_classes-label"><?php esc_html_e( 'CSS Classes', 'navsweeper' ); ?></strong>
 								</label>
-								<input type="text" name="bulk_edit_css_classes" class="regular-text" placeholder="<?php esc_attr_e( 'class1 class2 class3', 'navsweeper' ); ?>">
-								<p class="description"><?php _e( 'Separate multiple classes with spaces.', 'navsweeper' ); ?></p>
+								<input type="text" name="bulk_edit_css_classes" id="bulk_edit_css_classes" aria-labelledby="nsw-bulk-edit-css_classes-label" class="regular-text" placeholder="<?php esc_attr_e( 'class1 class2 class3', 'navsweeper' ); ?>">
+								<p class="description"><?php esc_html_e( 'Separate multiple classes with spaces.', 'navsweeper' ); ?></p>
 							</div>
 
 							<!-- Link Target Field -->
 							<div class="nsw-edit-field">
 								<label class="nsw-label-flex">
 									<input type="checkbox" name="bulk_edit_fields[]" value="link_target" class="nsw-field-checkbox">
-									<strong><?php _e( 'Link Target', 'navsweeper' ); ?></strong>
+									<strong id="nsw-bulk-edit-link_target-label"><?php esc_html_e( 'Link Target', 'navsweeper' ); ?></strong>
 								</label>
-								<select name="bulk_edit_link_target" class="regular-text">
-									<option value=""><?php _e( 'Same window/tab', 'navsweeper' ); ?></option>
-									<option value="_blank"><?php _e( 'New window/tab', 'navsweeper' ); ?></option>
-									<option value="_self"><?php _e( 'Same window/tab (explicit)', 'navsweeper' ); ?></option>
-									<option value="_parent"><?php _e( 'Parent frame', 'navsweeper' ); ?></option>
-									<option value="_top"><?php _e( 'Top frame', 'navsweeper' ); ?></option>
+								<select name="bulk_edit_link_target" id="bulk_edit_link_target" aria-labelledby="nsw-bulk-edit-link_target-label" class="regular-text">
+									<option value=""><?php esc_html_e( 'Same window/tab', 'navsweeper' ); ?></option>
+									<option value="_blank"><?php esc_html_e( 'New window/tab', 'navsweeper' ); ?></option>
+									<option value="_self"><?php esc_html_e( 'Same window/tab (explicit)', 'navsweeper' ); ?></option>
+									<option value="_parent"><?php esc_html_e( 'Parent frame', 'navsweeper' ); ?></option>
+									<option value="_top"><?php esc_html_e( 'Top frame', 'navsweeper' ); ?></option>
 								</select>
 							</div>
 
@@ -254,14 +262,14 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 							<div class="nsw-edit-field">
 								<label class="nsw-label-flex">
 									<input type="checkbox" name="bulk_edit_fields[]" value="description" class="nsw-field-checkbox">
-									<strong><?php _e( 'Description', 'navsweeper' ); ?></strong>
+									<strong id="nsw-bulk-edit-description-label"><?php esc_html_e( 'Description', 'navsweeper' ); ?></strong>
 								</label>
-								<textarea name="bulk_edit_description" class="large-text" rows="3" placeholder="<?php esc_attr_e( 'Description for menu items', 'navsweeper' ); ?>"></textarea>
+								<textarea name="bulk_edit_description" id="bulk_edit_description" aria-labelledby="nsw-bulk-edit-description-label" class="large-text" rows="3" placeholder="<?php esc_attr_e( 'Description for menu items', 'navsweeper' ); ?>"></textarea>
 							</div>
 						</div>
 
 						<div class="nsw-modal-footer">
-							<button type="button" class="button nsw-modal-cancel"><?php _e( 'Cancel', 'navsweeper' ); ?></button>
+							<button type="button" class="button nsw-modal-cancel"><?php esc_html_e( 'Cancel', 'navsweeper' ); ?></button>
 							<input type="submit" name="nsw_bulk_edit" class="button button-primary" value="<?php esc_attr_e( 'Update Items', 'navsweeper' ); ?>">
 						</div>
 					</form>
@@ -269,11 +277,11 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 			</div>
 
 			<!-- Add Menu Item Modal -->
-			<div id="nsw-add-item-modal" class="nsw-modal">
+			<div id="nsw-add-item-modal" class="nsw-modal" role="dialog" aria-modal="true" aria-labelledby="nsw-add-item-modal-title">
 				<div class="nsw-modal-content">
 					<div class="nsw-modal-header">
-						<h2><?php _e( 'Add New Menu Item', 'navsweeper' ); ?></h2>
-						<span class="nsw-modal-close nsw-add-modal-close">&times;</span>
+						<h2 id="nsw-add-item-modal-title"><?php esc_html_e( 'Add New Menu Item', 'navsweeper' ); ?></h2>
+						<button type="button" class="nsw-modal-close nsw-add-modal-close" aria-label="<?php esc_attr_e( 'Close', 'navsweeper' ); ?>">&times;</button>
 					</div>
 					<form method="post" id="nsw-add-item-form" action="<?php echo esc_url( admin_url( 'themes.php?page=nsw-bulk-delete&menu_id=' . $selected_menu_id ) ); ?>">
 						<?php wp_nonce_field( 'nsw_action', 'nsw_nonce' ); ?>
@@ -283,100 +291,65 @@ $selected_menu_id = isset( $_GET['menu_id'] ) ? intval( wp_unslash( $_GET['menu_
 
 						<div class="nsw-modal-body">
 							<p class="description">
-								<strong><?php _e( 'Add new menu item:', 'navsweeper' ); ?></strong> <span id="nsw-position-text"></span>
+								<strong><?php esc_html_e( 'Add new menu item:', 'navsweeper' ); ?></strong> <span id="nsw-position-text"></span>
 							</p>
 
 							<!-- Label Field -->
 							<div class="nsw-edit-field">
-								<label class="nsw-label-block">
-									<strong><?php _e( 'Label (Link Text)', 'navsweeper' ); ?> <span class="nsw-required-asterisk">*</span></strong>
+								<label class="nsw-label-block" for="new_item_label">
+									<strong><?php esc_html_e( 'Label (Link Text)', 'navsweeper' ); ?> <span class="nsw-required-asterisk">*</span></strong>
 								</label>
 								<input type="text" name="new_item_label" id="new_item_label" class="regular-text" placeholder="<?php esc_attr_e( 'Menu item label', 'navsweeper' ); ?>" required>
 							</div>
 
 							<!-- URL Field -->
 							<div class="nsw-edit-field">
-								<label class="nsw-label-block">
-									<strong><?php _e( 'URL', 'navsweeper' ); ?> <span class="nsw-required-asterisk">*</span></strong>
+								<label class="nsw-label-block" for="new_item_url">
+									<strong><?php esc_html_e( 'URL', 'navsweeper' ); ?> <span class="nsw-required-asterisk">*</span></strong>
 								</label>
 								<input type="url" name="new_item_url" id="new_item_url" class="regular-text" placeholder="https://example.com" required>
 							</div>
 
 							<!-- CSS Classes Field -->
 							<div class="nsw-edit-field">
-								<label class="nsw-label-block">
-									<strong><?php _e( 'CSS Classes', 'navsweeper' ); ?></strong>
+								<label class="nsw-label-block" for="new_item_css_classes">
+									<strong><?php esc_html_e( 'CSS Classes', 'navsweeper' ); ?></strong>
 								</label>
 								<input type="text" name="new_item_css_classes" id="new_item_css_classes" class="regular-text" placeholder="<?php esc_attr_e( 'class1 class2 class3', 'navsweeper' ); ?>">
-								<p class="description"><?php _e( 'Separate multiple classes with spaces.', 'navsweeper' ); ?></p>
+								<p class="description"><?php esc_html_e( 'Separate multiple classes with spaces.', 'navsweeper' ); ?></p>
 							</div>
 
 							<!-- Link Target Field -->
 							<div class="nsw-edit-field">
-								<label class="nsw-label-block">
-									<strong><?php _e( 'Link Target', 'navsweeper' ); ?></strong>
+								<label class="nsw-label-block" for="new_item_link_target">
+									<strong><?php esc_html_e( 'Link Target', 'navsweeper' ); ?></strong>
 								</label>
 								<select name="new_item_link_target" id="new_item_link_target" class="regular-text">
-									<option value=""><?php _e( 'Same window/tab', 'navsweeper' ); ?></option>
-									<option value="_blank"><?php _e( 'New window/tab', 'navsweeper' ); ?></option>
-									<option value="_self"><?php _e( 'Same window/tab (explicit)', 'navsweeper' ); ?></option>
-									<option value="_parent"><?php _e( 'Parent frame', 'navsweeper' ); ?></option>
-									<option value="_top"><?php _e( 'Top frame', 'navsweeper' ); ?></option>
+									<option value=""><?php esc_html_e( 'Same window/tab', 'navsweeper' ); ?></option>
+									<option value="_blank"><?php esc_html_e( 'New window/tab', 'navsweeper' ); ?></option>
+									<option value="_self"><?php esc_html_e( 'Same window/tab (explicit)', 'navsweeper' ); ?></option>
+									<option value="_parent"><?php esc_html_e( 'Parent frame', 'navsweeper' ); ?></option>
+									<option value="_top"><?php esc_html_e( 'Top frame', 'navsweeper' ); ?></option>
 								</select>
 							</div>
 
 							<!-- Description Field -->
 							<div class="nsw-edit-field">
-								<label class="nsw-label-block">
-									<strong><?php _e( 'Description', 'navsweeper' ); ?></strong>
+								<label class="nsw-label-block" for="new_item_description">
+									<strong><?php esc_html_e( 'Description', 'navsweeper' ); ?></strong>
 								</label>
 								<textarea name="new_item_description" id="new_item_description" class="large-text" rows="3" placeholder="<?php esc_attr_e( 'Description for menu item', 'navsweeper' ); ?>"></textarea>
 							</div>
 						</div>
 
 						<div class="nsw-modal-footer">
-							<button type="button" class="button nsw-modal-cancel nsw-add-modal-cancel"><?php _e( 'Cancel', 'navsweeper' ); ?></button>
+							<button type="button" class="button nsw-modal-cancel nsw-add-modal-cancel"><?php esc_html_e( 'Cancel', 'navsweeper' ); ?></button>
 							<input type="submit" name="nsw_add_item" class="button button-primary" value="<?php esc_attr_e( 'Add Item', 'navsweeper' ); ?>">
 						</div>
 					</form>
 				</div>
 			</div>
 
-			<script type="text/javascript">
-				document.addEventListener('DOMContentLoaded', function() {
-					// 1. Handle "Select All"
-					var selectAll = document.getElementById('cb-select-all-1');
-					if(selectAll) {
-						selectAll.addEventListener('change', function() {
-							var checkboxes = document.querySelectorAll('input[name="menu_items_to_delete[]"]');
-							for(var i=0; i<checkboxes.length; i++) {
-								checkboxes[i].checked = this.checked;
-							}
-						});
-					}
-
-					// 2. Validate Move Button
-					var moveBtn = document.getElementById('nsw_btn_move');
-					if(moveBtn) {
-						moveBtn.addEventListener('click', function(e) {
-							var dest = document.getElementById('destination_menu_id');
-							var checkboxes = document.querySelectorAll('input[name="menu_items_to_delete[]"]:checked');
-
-							if(checkboxes.length === 0) {
-								alert('<?php echo esc_js( __( 'Please select at least one item to move.', 'navsweeper' ) ); ?>');
-								e.preventDefault();
-								return false;
-							}
-
-							if(!dest || dest.value == "0") {
-								alert('<?php echo esc_js( __( 'Please select a valid destination menu.', 'navsweeper' ) ); ?>');
-								e.preventDefault();
-								return false;
-							}
-						});
-					}
-				});
-			</script>
 		<?php endif; ?>
 	<?php endif; ?>
 </div>
