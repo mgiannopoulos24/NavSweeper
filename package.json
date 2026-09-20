@@ -22,7 +22,7 @@
     "make-pot": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp i18n make-pot . languages/navsweeper.pot",
     "update-po": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp i18n update-po languages/navsweeper.pot languages/",
     "make-mo": "wp-env run cli --env-cwd=/var/www/html/wp-content/plugins/navsweeper wp i18n make-mo languages/",
-    "bundle": "mkdir -p build && bunx bestzip build/navsweeper.zip navsweeper.php readme.txt includes/ views/ assets/ languages/"
+    "bundle": "sh scripts/bundle.sh"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

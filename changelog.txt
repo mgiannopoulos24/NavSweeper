@@ -1,0 +1,15 @@
+NavSweeper — Changelog
+======================
+
+1.0.0 — 2026-09-20
+------------------
+* Initial release.
+* Appearance → NavSweeper admin page: pick a menu and see every item with its label, URL and type in a list table, with a select-all checkbox.
+* Bulk delete: remove any number of selected items after a confirmation.
+* Bulk move: move selected items to another menu, or reset them to top level within the current one.
+* Bulk edit modal: update label, URL, CSS classes, link target and description on every selected item; only the fields you tick are changed.
+* Add item: a + button on each row opens an "Add Above / Add Below" menu that positions a new custom link exactly where you want it, with optional CSS classes, link target and description.
+* Block theme compatibility: registers a default menu location when the active theme has none, so the Menus screen and NavSweeper are available under block themes.
+* Accessibility: labelled fields and checkboxes, dialog modals that trap Tab, close on Escape and restore focus, keyboard-navigable add-item menu; zero axe violations in every state.
+* Translation-ready; Greek translation included.
+* Playwright + axe-core test suite.

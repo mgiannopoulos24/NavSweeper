@@ -26,7 +26,7 @@ jobs:
 
       - name: Release notes from changelog.txt (top entry)
         run: |
-          awk '/^= [0-9]+\.[0-9]+\.[0-9]+ =$/{n++; next} n==1{print} n==2{exit}' changelog.txt > notes.md
+          awk 'BEGIN{n=0} /^[0-9]+\.[0-9]+\.[0-9]+ /{n++} n==1{print} n==2{exit}' changelog.txt > notes.md
           cat notes.md
 
       - uses: softprops/action-gh-release@v2

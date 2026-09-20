@@ -52,6 +52,8 @@ Yes. NavSweeper automatically registers a default menu location if your theme do
 
 = 1.0.0 =
 * Initial release.
-* Bulk delete, move, and edit navigation menu items.
-* Add custom menu items with positional control.
-* Block theme compatibility.
+* Bulk delete, move, and edit navigation menu items from Appearance → NavSweeper.
+* Add custom menu items above or below any existing item, with CSS classes, link target and description.
+* Accessible modals and add-item menu: keyboard navigable, labelled, Escape to close, focus restored.
+* Block theme compatibility: registers a default menu location when the theme has none.
+* Translation-ready; Greek translation included.
