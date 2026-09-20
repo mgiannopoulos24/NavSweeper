@@ -114,7 +114,7 @@ navsweeper/
 
 ## Requirements
 
-- WordPress 5.0 or higher
+- WordPress 6.5 or higher
 - PHP 8.1 or higher
 - Bun (for development)
 
@@ -123,7 +123,7 @@ navsweeper/
 The plugin uses WordPress's standard plugin structure and follows WordPress coding standards. The local development environment is configured to use:
 
 - WordPress latest version
-- PHP 8.3
+- PHP 8.1
 - Twenty Twenty-Five theme
 - Debug mode enabled
 
