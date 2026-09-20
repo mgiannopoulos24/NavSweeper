@@ -24,7 +24,6 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
           tools: composer
-      - name: Syntax check
       - run: composer install --no-interaction --prefer-dist
       - run: vendor/bin/phpcs --standard=phpcs.xml .
 
